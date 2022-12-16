@@ -109,3 +109,30 @@ var finances = [
 
 var numberOfMonths = finances.length;
 console.log(numberOfMonths);
+
+//* The net total amount of Profit/Losses over the entire period.
+
+// column sum of elements in a 2d arrary
+const sumArray = (array) => {
+    const newArray = [];
+    array.forEach(sub => {
+        sub.forEach((num, index) => {
+            if(newArray[index]) {
+                newArray[index] += num;
+                } else{ 
+                    newArray[index] = num;
+            }
+        } );
+        
+    });
+    return newArray;
+}
+
+//used slicing to delete a column from the multidimensional array.
+var sliceFinance = finances.map(function(val) {
+    return val.slice(1,2);
+} );
+
+// cont. column sum of elements in 2d array.
+    console.log(sumArray(sliceFinance));
+
