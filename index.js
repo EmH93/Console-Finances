@@ -103,6 +103,9 @@ var finances = [
 ];
 
 
+//header in console
+console.log("Financial Analysis");
+console.log("----------------------------");
 
 //* The total number of months included in the dataset.
 
@@ -159,9 +162,9 @@ var sliceFinance = finances.map(function(val) {
 console.log("The average change is: $" + Math.round(-2315.1176470588234 * 100) / 100);
 
 // * The greatest increase in profits (date and amount) over the entire period.
+// * The greatest decrease in losses (date and amount) over the entire period.
 
-// Variable to hold month and money amount
-
+// Variables for calculating least and most profit.
 var greatest = [" ", 0];
 var least = [" ", 999999999999];
 var net = 0;
@@ -190,10 +193,6 @@ for (var i = 0; i < finances.length; i++) {
     } 
 }
 
-console.log("This is the least: " + least);
-console.log("This is the greatest: " + greatest);
-
-
-
-
-// * The greatest decrease in losses (date and amount) over the entire period.
+//logging final stats of greatest and least.
+console.log("This is the greatest increase in profit: " + greatest[0] + " ($" + greatest[1] + ")");
+console.log("This is the greatest decrease in profit: " + least[0] + " ($" + least[1] + ")");
