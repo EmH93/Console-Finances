@@ -108,7 +108,7 @@ var finances = [
 //* The total number of months included in the dataset.
 
 var numberOfMonths = finances.length;
-console.log(numberOfMonths);
+console.log("Total months are: " + numberOfMonths);
 
 //* The net total amount of Profit/Losses over the entire period.
 
@@ -134,5 +134,27 @@ var sliceFinance = finances.map(function(val) {
 } );
 
 // cont. column sum of elements in 2d array.
-    console.log(sumArray(sliceFinance));
+    console.log("Total is: " + sumArray(sliceFinance));
+
+// * The average of the **changes** in Profit/Losses over the entire period.
+  // * You will need to track what the total change in profits are from month to month and then find the average.
+  // * (`Total/Number of months`)
+
+// Finds the difference between each month of the array.
+    function diff(sliceFinance) {
+    return sliceFinance.slice(1).map(function(n, i) { return n - sliceFinance[i]; });
+}
+
+// This prints the differences between each month in the console.
+// console.log(diff(sliceFinance));
+
+//This will show the sum of the differences month to month.
+// console.log(diff(sliceFinance).reduce((a, b) => a + b, 0));
+
+//This logs the average without being rounded to two decimal places.
+console.log(-196785/86);
+
+//This logs the average rounded to two decimal places.
+console.log(Math.round(-2288.1976744186045 * 100) / 100);
+
 
