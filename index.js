@@ -154,7 +154,11 @@ var sliceFinance = finances.map(function(val) {
 //This logs the average without being rounded to two decimal places.
 console.log(-196785/86);
 
-//This logs the average rounded to two decimal places.
-console.log(Math.round(-2288.1976744186045 * 100) / 100);
+//This logs the average rounded to two decimal places. on console it only reads as 1 decimal place as the .197 rounds up to .20 and the zero doesn't display.
+console.log("The average profit/loss to two decimal places is: " + Math.round(-2288.1976744186045 * 100) / 100);
+
+// * The greatest increase in profits (date and amount) over the entire period.
 
 
+
+// * The greatest decrease in losses (date and amount) over the entire period.
