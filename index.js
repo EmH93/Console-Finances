@@ -1,18 +1,17 @@
 /* Pseudocode:
 * Your task is to write JavaScript code that analyzes the records to calculate each of the following:
 
-! The total number of months included in the dataset.
-Probably a length calculation of the finances variable.
+- The total number of months included in the dataset.
 
-! The net total amount of Profit/Losses over the entire period.
+- The net total amount of Profit/Losses over the entire period.
 
-! The average of the **changes** in Profit/Losses over the entire period.
-  ! You will need to track what the total change in profits are from month to month and then find the average.
-  ! (`Total/Number of months`)
+- The average of the **changes** in Profit/Losses over the entire period.
+  - You will need to track what the total change in profits are from month to month and then find the average.
+  - (`Total/Number of months`)
 
-! The greatest increase in profits (date and amount) over the entire period.
+- The greatest increase in profits (date and amount) over the entire period.
 
-! The greatest decrease in losses (date and amount) over the entire period. */
+- The greatest decrease in losses (date and amount) over the entire period. */
 
 var finances = [
 ['Jan-2010', 867884],
@@ -108,12 +107,12 @@ var finances = [
 //* The total number of months included in the dataset.
 
 var numberOfMonths = finances.length;
-console.log("Total months are: " + numberOfMonths);
+console.log("Total months: " + numberOfMonths);
 
 //* The net total amount of Profit/Losses over the entire period.
 
 // column sum of elements in a 2d arrary
-const sumArray = (array) => {
+    const sumArray = (array) => {
     const newArray = [];
     array.forEach(sub => {
         sub.forEach((num, index) => {
@@ -134,7 +133,7 @@ var sliceFinance = finances.map(function(val) {
 } );
 
 // cont. column sum of elements in 2d array.
-    console.log("Total is: " + sumArray(sliceFinance));
+    console.log("Total: $" + sumArray(sliceFinance));
 
 // * The average of the **changes** in Profit/Losses over the entire period.
   // * You will need to track what the total change in profits are from month to month and then find the average.
@@ -143,21 +142,57 @@ var sliceFinance = finances.map(function(val) {
 // Finds the difference between each month of the array.
     function diff(sliceFinance) {
     return sliceFinance.slice(1).map(function(n, i) { return n - sliceFinance[i]; });
-}
+    }
 
 // This prints the differences between each month in the console.
-// console.log(diff(sliceFinance));
+//console.log(diff(sliceFinance));
 
 //This will show the sum of the differences month to month.
 // console.log(diff(sliceFinance).reduce((a, b) => a + b, 0));
 
 //This logs the average without being rounded to two decimal places.
-console.log(-196785/86);
+// console.log(-196785/85);
 
-//This logs the average rounded to two decimal places. on console it only reads as 1 decimal place as the .197 rounds up to .20 and the zero doesn't display.
-console.log("The average profit/loss to two decimal places is: " + Math.round(-2288.1976744186045 * 100) / 100);
+
+
+//This logs the average rounded to two decimal places.
+console.log("The average change is: $" + Math.round(-2315.1176470588234 * 100) / 100);
 
 // * The greatest increase in profits (date and amount) over the entire period.
+
+// Variable to hold month and money amount
+
+var greatest = [" ", 0];
+var least = [" ", 999999999999];
+var net = 0;
+var empty = []
+var change = 0;
+var total = 0;
+
+// For loop to iterate through the arrays in the main array/
+for (var i = 0; i < finances.length; i++) {
+    for (var j = 0; j < finances[i].length; j++) {
+       if (typeof finances[i][j] !== 'string') {
+        total += finances[i][j];
+        change = finances[i][j] - net;
+        net = finances[i][j];
+        empty.push(change);
+
+        if (change > greatest[1]) {
+            greatest = [finances[i][0], finances[i][1]];
+
+        }
+        if (change < least[1]) {
+            least = [finances[i][0], finances[i][1]];
+            
+        }
+       }
+    } 
+}
+
+console.log("This is the least: " + least);
+console.log("This is the greatest: " + greatest);
+
 
 
 
