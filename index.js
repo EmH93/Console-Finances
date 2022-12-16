@@ -154,6 +154,8 @@ var sliceFinance = finances.map(function(val) {
 // console.log(diff(sliceFinance).reduce((a, b) => a + b, 0));
 
 //This logs the average without being rounded to two decimal places.
+
+// ! I have divided the change total by 85 as there are 85 changes between the 86 months.
 // console.log(-196785/85);
 
 
